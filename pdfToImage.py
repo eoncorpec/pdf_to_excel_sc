@@ -1,9 +1,9 @@
 from pdf2image import convert_from_path
 import os
 
-pdf_path: str = "./Inputs/DocEconomica_731956_3_1_1_2020_11_04_19_44_42_860.pdf"
+pdf_path= "./Inputs/Docs2LaFavorita/resultado_integral.pdf"
 
-outputDirectory = "./Images/Doc1"
+outputDirectory = "./Images/Docs2LaFavorita/ResultadoIntegral_Dir"
 
 if not os.path.exists(outputDirectory):
     os.makedirs(outputDirectory)

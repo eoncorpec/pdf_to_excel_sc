@@ -4,10 +4,10 @@ import pandas as pd
 
 pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract'
 
-image = cv2.imread("./Images/Doc1/page0.jpg")
+image = cv2.imread("./Images/Docs2LaFavorita/DocEconomica_384/page0.jpg")
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 _, threshold_image= cv2.threshold(gray_image, 0,255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-myconfig = r"--psm 3 --oem 3"
+myconfig = r"--psm 4 --oem 3"
 imageString = pytesseract.image_to_string(threshold_image, config=myconfig)
 #print(f"Info: {imageString}")
 
@@ -19,7 +19,7 @@ for row in table_data:
  
 df = pd.DataFrame(table_data)
 df = df.applymap(lambda x: x if x.strip() != "" else pd.NA)
-output_excel_file = "./Outputs/Doc1/sheet.xlsx"
+output_excel_file = "./Outputs/Docs2LaFavorita/DocEconomica_384/page0.xlsx"
 df.to_excel(output_excel_file, index=False, header=False)
 
 
