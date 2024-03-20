@@ -36,3 +36,20 @@ def remove_trailing_number_in_column(df):
     
     df.columns = cols
     return df
+
+
+def remove_columns_full_of_Nan(df, listaColumnasAllData):
+    contadorNulls = 0
+    for k in listaColumnasAllData:
+        columnValues = df[k].to_list()
+
+        for cell in columnValues:
+            if pd.isna(cell):
+                contadorNulls += 1
+
+        if contadorNulls == len(df):
+            df.drop([k], axis=1, inplace=True)
+        
+        contadorNulls = 0
+        columnValues.clear()
+    return df
