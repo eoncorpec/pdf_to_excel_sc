@@ -77,10 +77,13 @@ for _, file in tqdm(enumerate(files)):
                 area=coords[str(dfIndex + 1)],
                 lattice=True,
                 output_format="dataframe",
+                multiple_tables=True,   
+                encoding="latin-1"
             )
             dfData = pd.concat([dfData, dfPdf[0]])
-    except:
-        print(f"falla {file}")
+    except Exception as e:
+        #print(f"falla {file}")
+        print(f"falla {e}")
         continue
 
     dfData = dfData.astype("object")
