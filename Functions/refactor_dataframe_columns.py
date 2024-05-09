@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 
+
 def remove_accents_and_replace(text):
     text = text.strip()
     text = text.lower()
@@ -28,12 +29,13 @@ def rename_duplicate_columns(df):
     df.columns = cols
     return df
 
+
 def remove_trailing_number_in_column(df):
     cols = df.columns.to_list()
     for k in range(len(cols)):
         if cols[k][0].isdecimal():
-            cols[k] = "_"+cols[k]
-    
+            cols[k] = "_" + cols[k]
+
     df.columns = cols
     return df
 
@@ -49,17 +51,18 @@ def remove_columns_full_of_Nan(df, listaColumnasAllData):
 
         if contadorNulls == len(df):
             df.drop([k], axis=1, inplace=True)
-        
+
         contadorNulls = 0
         columnValues.clear()
     return df
 
 
-def find_position_of_value_in_column(df: pd.DataFrame, value:str) -> int:
-    fila = df.loc[df.isin([value]).any(axis=1) ].index[0]
-    columna = df.columns[ df.iloc[fila].to_list().index(value) ]
+def find_position_of_value_in_column(df: pd.DataFrame, value: str) -> int:
+    fila = df.loc[df.isin([value]).any(axis=1)].index[0]
+    columna = df.columns[df.iloc[fila].to_list().index(value)]
 
     posicion = df.columns.to_list().index(columna)
     print(f"Columna: {columna}")
     print(f"Posicion: {posicion}")
     return posicion
+
