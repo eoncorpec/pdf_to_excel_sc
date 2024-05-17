@@ -62,7 +62,7 @@ def find_position_of_value_in_column(df: pd.DataFrame, value: str) -> int:
     columna = df.columns[df.iloc[fila].to_list().index(value)]
 
     posicion = df.columns.to_list().index(columna)
-    print(f"Columna: {columna}")
-    print(f"Posicion: {posicion}")
+    #print(f"Columna: {columna}")
+    #print(f"Posicion: {posicion}")
     return posicion
 
